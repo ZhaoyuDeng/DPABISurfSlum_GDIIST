@@ -6,10 +6,10 @@
 
 [DPABISurfSlurm](https://github.com/Chaogan-Yan/DPABI/tree/master/DPABISurf/DPABISurfSlurm)是DPABISurf的高性能计算版本，能以更快的计算速度运行在高性能计算中心（或者称为超算）。本项目DPABISurfSlurm_GDIIST已经经过适配，能正确运行在GDIIST的创新平台上。
 
-DPABISurfSlurm的运行依赖于6个路径，需要一一确定并填写在脚本的变量中：
+DPABISurfSlurm的运行依赖于5个路径，需要一一确定并填写在脚本的变量中：
 | 变量名 | 路径 |
 | --- | --- |
-| `DPABISurfSlurmDIR` | DAPBISurfDlurm工具所有脚本所在的路径 |
+| `DPABISurfSlurmDIR` | DAPBISurfSlurm工具所有脚本所在的路径 |
 | `SetEnvScriptDir` | `SetEnv.sh`所在路径 |
 | `DATADIR` | BIDS文件夹所在的父级路径 |
 | `SingularityDIR` | 两个`.sif`镜像文件所在路径，即`DPABISurfSlurm_SingularityFiles`文件夹 |
