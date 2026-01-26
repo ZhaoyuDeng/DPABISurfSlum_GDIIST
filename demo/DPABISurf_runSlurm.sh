@@ -15,44 +15,44 @@
 # ycg.yan@gmail.com
 
 # !!!DEFINE YOURS BELOW!!!
-export DPABISurfSlurmDIR="/fs/data/home/dengzy_sjwljgygnpt/MatlabToolboxs/DPABISurfSlurm_GDIIST"
+export DPABISurfSlurmDIR=".../DPABISurfSlurm_GDIIST"
 # Should have the DPABISurfSlurm files
-export SetEnvScriptDir="/fs/data/home/dengzy_sjwljgygnpt/Personal/SYSU2H/4_Analysis3_test/"
+export SetEnvScriptDir=".../Analysis"
 # Should have SetEnv.sh
 # You should also go into SetEnv.sh to define your parameters!!!
-export DATADIR="/fs/data/home/dengzy_sjwljgygnpt/Personal/SYSU2H/4_Analysis3_test/"
+export DATADIR=".../Analysis"
 # Should have BIDS and subjects.txt
 # !!!DEFINE YOURS ABOVE!!!
 
 sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/1_GetTRInfo.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/2_RemoveFirstTimePoints.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n GetTRInfo) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/2_RemoveFirstTimePoints.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/3_Prefmriprep.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n RemoveFirstTimePoints) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/3_Prefmriprep.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/4_fmriprep.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Prefmriprep) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/4_fmriprep.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/5_Postfmriprep.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n fmriprep) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/5_Postfmriprep.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/6_Organize_fmriprep_Surf.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Postfmriprep) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/6_Organize_fmriprep_Surf.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/7_Organize_fmriprep.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Organize_fmriprep_Surf) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/7_Organize_fmriprep.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/8_SegmentSubregions.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Organize_fmriprep) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/8_SegmentSubregions.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/9_Organize_SegmentSubregions_Convert.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n SegmentSubregions) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/9_Organize_SegmentSubregions_Convert.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/10_Organize_SegmentSubregions.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Organize_SegmentSubregions_Convert) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/10_Organize_SegmentSubregions.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/11_DPABISurf_run.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n Organize_SegmentSubregions) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/11_DPABISurf_run.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/12_MakeLnForGSR.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n DPABISurf_run) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/12_MakeLnForGSR.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/13_DPABISurf_run_GSR.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n MakeLnForGSR) --export=SetEnvScriptDir=${SetEnvScriptDir} --array=1-$(( $( wc -l < ${DATADIR}/subjects.txt ) )) --wait ${DPABISurfSlurmDIR}/13_DPABISurf_run_GSR.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/14_ResultsOrganizer_Surf.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n DPABISurf_run_GSR) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/14_ResultsOrganizer_Surf.slurm
 chmod -R 777 ~/.matlab/mcr_v913
-sbatch --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/15_TarResults.slurm
+sbatch --dependency=afterok:$(squeue -u $USER -h -o %i -n ResultsOrganizer_Surf) --export=SetEnvScriptDir=${SetEnvScriptDir} --wait ${DPABISurfSlurmDIR}/15_TarResults.slurm
 chmod -R 777 ~/.matlab/mcr_v913
 
 echo "The sbatch of DPABISurfSlurm is done!!! :)"

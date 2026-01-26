@@ -15,12 +15,12 @@
 # ycg.yan@gmail.com
 
 # !!!DEFINE YOURS BELOW!!!
-export DPABISurfSlurmDIR="/fs/data/home/dengzy_sjwljgygnpt/MatlabToolboxs/DPABISurfSlurm_GDIIST"
+export DPABISurfSlurmDIR=".../DPABISurfSlurm_GDIIST"
 # Should have the DPABISurfSlurm files
-export SetEnvScriptDir="/fs/data/home/dengzy_sjwljgygnpt/Personal/SYSU2H/4_Analysis_all"
+export SetEnvScriptDir=".../Analysis"
 # Should have SetEnv.sh
 # You should also go into SetEnv.sh to define your parameters!!!
-export DATADIR="/fs/data/home/dengzy_sjwljgygnpt/Personal/SYSU2H/4_Analysis_all"
+export DATADIR=".../Analysis"
 # Should have BIDS and subjects.txt
 # !!!DEFINE YOURS ABOVE!!!
 

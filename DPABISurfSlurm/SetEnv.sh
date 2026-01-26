@@ -1,13 +1,13 @@
 #!/bin/bash
 
-export DATADIR="/fs/data/home/dengzy_sjwljgygnpt/Personal/SYSU2H/4_Analysis_all"
+export DATADIR=".../Analysis"
 # Should have BIDS and subjects.txt
 
-export SingularityDIR="/fs/data/home/dengzy_sjwljgygnpt/MatlabToolboxs/DPABISurfSlurm_GDIIST/"
+export SingularityDIR=".../DPABISurfSlurm_SingularityFiles"
 # Should have dpabisurfslurm.sif. You can get it by singularity pull dpabisurfslurm.sif docker://cgyan/dpabisurfslurm:latest
 # Should have freesurfer.sif. You can get it by singularity pull freesurfer.sif docker://cgyan/freesurfer:latest
 
-export FreeSurferLicenseDIR="/fs/data/home/dengzy_sjwljgygnpt/MatlabToolboxs/DPABISurfSlurm_GDIIST/"
+export FreeSurferLicenseDIR=".../DPABISurfSlurm_GDIIST"
 # Should have license.txt from FreeSurfer
 
 export RemoveFirstTimePoints="5"
