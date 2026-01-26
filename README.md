@@ -76,8 +76,7 @@ export DATADIR=".../Analysis"
 export DATADIR=".../Analysis"
 # Should have BIDS and subjects.txt
 export SingularityDIR=".../DPABISurfSlurm_SingularityFiles"
-# Should have dpabisurfslurm.sif. You can get it by singularity pull dpabisurfslurm.sif docker://cgyan/dpabisurfslurm:latest
-# Should have freesurfer.sif. You can get it by singularity pull freesurfer.sif docker://cgyan/freesurfer:latest
+# Should have dpabisurfslurm.sif and freesurfer.sif. 
 export FreeSurferLicenseDIR=".../DPABISurfSlurm_GDIIST"
 # Should have license.txt from FreeSurfer
 export RemoveFirstTimePoints="5"
@@ -105,7 +104,7 @@ source ../DPABISurf_runSlurm.sh
 
 ------
 
-在运行程序前，`DATADIR`下的文件结构应如下：
+PS1：在运行程序前，`DATADIR`下的文件结构应如下：
 
 ```bash
 .
@@ -127,6 +126,6 @@ source ../DPABISurf_runSlurm.sh
 └── subjects.txt
 ```
 
-PS1：如果在处理过程中出现被试处理失败的情况，参考文档[RefCommandsForFailedSubjects](https://github.com/Chaogan-Yan/DPABI/blob/master/DPABISurf/DPABISurfSlurm/RefCommandsForFailedSubjects.txt)尝试解决问题。
+PS2：如果在处理过程中出现被试处理失败的情况，参考文档[RefCommandsForFailedSubjects.txt](https://github.com/Chaogan-Yan/DPABI/blob/master/DPABISurf/DPABISurfSlurm/RefCommandsForFailedSubjects.txt)尝试解决问题。
 
-PS2：根据服务器情况和需求可以修改${DPABISurfSlurmDIR}下文件的参数，以控制资源使用程度。
+PS3：根据服务器情况和需求可以修改`DPABISurfSlurmDIR`下脚本的参数，以控制资源使用量。
