@@ -2,9 +2,9 @@
 
 官方教程链接：[https://rfmri.org/DPABISurfSlurm](https://rfmri.org/DPABISurfSlurm)
 
-DPABISurfSlurm是DPABISurf的高性能计算版本，能运行在高性能计算中心（或者称为超算）。唯一需要的工具包是Singularity。
+[DPABISurf](https://rfmri.org/content/dpabisurf-surface-based-resting-state-fmri-data-analysis-toolbox)是DPABI（[官网](https://rfmri.org/DPABI)|[GitHub](https://github.com/Chaogan-Yan/DPABI)）的重要子工具，通过基于FreeSurfer的大脑皮层处理方法，能预处理和分析静息态磁共振（rs-fMRI）数据。
 
-本DPABISurfSlurm_GDIIST已经经过适配，能正确运行在GDIIST的创新平台上。
+[DPABISurfSlurm](https://github.com/Chaogan-Yan/DPABI/tree/master/DPABISurf/DPABISurfSlurm)是DPABISurf的高性能计算版本，能以更快的计算速度运行在高性能计算中心（或者称为超算）。本项目DPABISurfSlurm_GDIIST已经经过适配，能正确运行在GDIIST的创新平台上。
 
 DPABISurfSlurm的运行依赖于6个路径，需要一一确定并填写在脚本的变量中：
 | 变量名 | 路径 |
